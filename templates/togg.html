@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    /* Styling for the label */
+    .label {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      display: inline-block;
+      color: #333;
+      margin: 20px;
+    }
+
+      /* Default color */
+    
+
+    /* Highlighted style for selected option */
+    .label.selected {
+      color: #2196F3;
+      /* Highlighted color */
+    }
+
+    /* Styling for the toggle button */
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* Slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 34px;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      border-radius: 50%;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: #2196F3;
+    }
+
+    input:checked+.slider:before {
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
+    /* Styling for the card */
+    .card {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f5f5f5;
+      padding: 20px;
+      margin-top: 20px;
+      /* width: 300px; */
+    }
+
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0px;
+    }
+
+
+
+    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid #dddddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .high-calories {
+      background-color: #ffe6e6;
+    }
+
+    .low-calories {
+      background-color: #ffe6e6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul class="nav justify-content-end">
+    {% if name %}
+    <li class="nav-item">
+      <a class="nav-link" href="/about">About us</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/exer">Exercise</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/togg">Diet Plan</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/profile">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/">Log out</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="/register">Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/login">Login</a>
+    </li>
+    {% endif %}
+  </ul>
+
+
+  <div class="label">weight gain</div>
+  <label class="toggle">
+    <input type="checkbox">
+    <span class="slider round"></span>
+  </label>
+  <div class="label">weight loss</div>
+
+  <div class="card" id="selectedText">
+    Selected option will be displayed here.
+  </div>
+
+  <script>
+    // Get the input element
+    const checkbox = document.querySelector('.toggle input');
+
+    // Get the labels
+    const labels = document.querySelectorAll('.label');
+
+    // Get the card element
+    const card = document.getElementById('selectedText');
+
+    // Add event listener to checkbox
+    checkbox.addEventListener('change', function () {
+      // Loop through labels and remove 'selected' class
+      labels.forEach(label => {
+        label.classList.remove('selected');
+      });
+
+      // Add 'selected' class to the label of the selected option
+      if (this.checked) {
+        labels[0].classList.add('selected'); // weight gain
+
+        var table = `
+    
+  <table class="high-calories">
+    <h2>High Calorie Foods</h2>
+    <thead>
+      <tr>
+        <th>Food Item</th>
+        <th>Protein (grams)</th>
+        <th>Calories (kcal)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- High Calorie Foods -->
+      <tr>
+        <td>Chicken breast</td>
+        <td>31g</td>
+        <td>165 kcal</td>
+      </tr>
+      <tr>
+        <td>Turkey breast</td>
+        <td>26g</td>
+        <td>140 kcal</td>
+      </tr>
+      <tr>
+        <td>Salmon</td>
+        <td>22g</td>
+        <td>206 kcal</td>
+      </tr>
+      <tr>
+        <td>Paneer (Indian Cottage Cheese)</td>
+        <td>18g</td>
+        <td>265 kcal</td>
+      </tr>
+      <tr>
+        <td>Soybeans (Soya)</td>
+        <td>29g</td>
+        <td>298 kcal</td>
+      </tr>
+      <tr>
+        <td>Beef steak</td>
+        <td>25g</td>
+        <td>250 kcal</td>
+      </tr>
+      <tr>
+        <td>Pork chop</td>
+        <td>27g</td>
+        <td>235 kcal</td>
+      </tr>
+      <tr>
+        <td>Lamb chop</td>
+        <td>25g</td>
+        <td>270 kcal</td>
+      </tr>
+      <tr>
+        <td>Bacon</td>
+        <td>30g</td>
+        <td>541 kcal</td>
+      </tr>
+      <tr>
+        <td>Avocado</td>
+        <td>2g</td>
+        <td>160 kcal</td>
+      </tr>
+      <tr>
+        <td>Peanut butter</td>
+        <td>25g</td>
+        <td>588 kcal</td>
+      </tr>
+      <tr>
+        <td>Dark chocolate</td>
+        <td>5g</td>
+        <td>600 kcal</td>
+      </tr>
+      <tr>
+        <td>Almonds</td>
+        <td>21g</td>
+        <td>576 kcal</td>
+      </tr>
+      <tr>
+        <td>Cashews</td>
+        <td>18g</td>
+        <td>553 kcal</td>
+      </tr>
+      <tr>
+        <td>Pecans</td>
+        <td>9g</td>
+        <td>691 kcal</td>
+      </tr>
+      <tr>
+        <td>Walnuts</td>
+        <td>15g</td>
+        <td>654 kcal</td>
+      </tr>
+      <tr>
+        <td>Macadamia nuts</td>
+        <td>9g</td>
+        <td>718 kcal</td>
+      </tr>
+      <tr>
+        <td>Corn oil</td>
+        <td>0g</td>
+        <td>900 kcal</td>
+      </tr>
+      <tr>
+        <td>Olive oil</td>
+        <td>0g</td>
+        <td>884 kcal</td>
+      </tr>
+      <tr>
+        <td>Coconut oil</td>
+        <td>0g</td>
+        <td>862 kcal</td>
+      </tr>
+      <tr>
+        <td>Butter</td>
+        <td>0g</td>
+        <td>717 kcal</td>
+      </tr>
+      <tr>
+        <td>Sugar</td>
+        <td>0g</td>
+        <td>387 kcal</td>
+      </tr>
+      <tr>
+        <td>Honey</td>
+        <td>0g</td>
+        <td>304 kcal</td>
+      </tr>
+      <tr>
+        <td>Molasses</td>
+        <td>0g</td>
+        <td>290 kcal</td>
+      </tr>
+      <tr>
+        <td>Maple syrup</td>
+        <td>0g</td>
+        <td>260 kcal</td>
+      </tr>
+      <tr>
+        <td>Corn syrup</td>
+        <td>0g</td>
+        <td>281 kcal</td>
+      </tr>
+      <tr>
+        <td>White bread</td>
+        <td>7g</td>
+        <td>266 kcal</td>
+      </tr>
+      <tr>
+        <td>Bagel</td>
+        <td>10g</td>
+        <td>280 kcal</td>
+      </tr>
+      <tr>
+        <td>Chocolate chip cookie</td>
+        <td>2g</td>
+        <td>200 kcal</td>
+      </tr>
+      <tr>
+        <td>Potato chips</td>
+        <td>2g</td>
+        <td>536 kcal</td>
+      </tr>
+    </tbody>
+  </table>`;
+
+        card.innerHTML = "Weight gain is selected. " + table;
+      }
+      else {
+        labels[1].classList.add('selected'); // weight loss
+        var table = `
+        
+      <h2>Low Calorie Foods</h2>
+    <table class="low-calories">
+    <thead>
+    <tr>
+      <th>Food Item</th>
+      <th>Protein (grams)</th>
+      <th>Calories (kcal)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Low Calorie Foods -->
+    <tr>
+      <td>Spinach</td>
+      <td>2.9g</td>
+      <td>23 kcal</td>
+    </tr>
+    <tr>
+      <td>Broccoli</td>
+      <td>2.8g</td>
+      <td>34 kcal</td>
+    </tr>
+    <tr>
+      <td>Cucumber</td>
+      <td>0.7g</td>
+      <td>16 kcal</td>
+    </tr>
+    <tr>
+      <td>Tomatoes</td>
+      <td>0.9g</td>
+      <td>18 kcal</td>
+    </tr>
+    <tr>
+      <td>Cauliflower</td>
+      <td>1.9g</td>
+      <td>25 kcal</td>
+    </tr>
+    <tr>
+      <td>Lettuce</td>
+      <td>1.4g</td>
+      <td>15 kcal</td>
+    </tr>
+    <tr>
+      <td>Zucchini</td>
+      <td>1.2g</td>
+      <td>17 kcal</td>
+    </tr>
+    <tr>
+      <td>Kale</td>
+      <td>2.2g</td>
+      <td>35 kcal</td>
+    </tr>
+    <tr>
+      <td>Brussels Sprouts</td>
+      <td>3.4g</td>
+      <td>43 kcal</td>
+    </tr>
+    <tr>
+      <td>Asparagus</td>
+      <td>2.2g</td>
+      <td>20 kcal</td>
+    </tr>
+    <tr>
+      <td>Green Beans</td>
+      <td>1.8g</td>
+      <td>31 kcal</td>
+    </tr>
+    <tr>
+      <td>Cabbage</td>
+      <td>1.3g</td>
+      <td>25 kcal</td>
+    </tr>
+    <tr>
+      <td>Radishes</td>
+      <td>0.7g</td>
+      <td>16 kcal</td>
+    </tr>
+    <tr>
+      <td>Peppers (Bell)</td>
+      <td>1.3g</td>
+      <td>31 kcal</td>
+    </tr>
+    <tr>
+      <td>Onions</td>
+      <td>1.1g</td>
+      <td>40 kcal</td>
+    </tr>
+    <tr>
+      <td>Carrots</td>
+      <td>0.9g</td>
+      <td>41 kcal</td>
+    </tr>
+    <tr>
+      <td>Celery</td>
+      <td>0.7g</td>
+      <td>16 kcal</td>
+    </tr>
+    <tr>
+      <td>Beetroot</td>
+      <td>1.6g</td>
+      <td>43 kcal</td>
+    </tr>
+    <tr>
+      <td>Garlic</td>
+      <td>6g</td>
+      <td>149 kcal</td>
+    </tr>
+    <tr>
+      <td>Mushrooms</td>
+      <td>3.1g</td>
+      <td>22 kcal</td>
+    </tr>
+    <tr>
+      <td>Eggplant</td>
+      <td>1g</td>
+      <td>25 kcal</td>
+    </tr>
+    <tr>
+      <td>Sprouts</td>
+      <td>2.5g</td>
+      <td>30 kcal</td>
+    </tr>
+    <tr>
+      <td>Onion</td>
+      <td>1.1g</td>
+      <td>40 kcal</td>
+    </tr>
+    <tr>
+      <td>Lime</td>
+      <td>0.7g</td>
+      <td>30 kcal</td>
+    </tr>
+    <tr>
+      <td>Lemon</td>
+      <td>1.1g</td>
+      <td>29 kcal</td>
+    </tr>
+  </tbody>
+    </table>;`
+
+        card.innerHTML = "Weight loss is selected." + table;
+      }
+    });
+  </script>
+</body>
+
+</html>

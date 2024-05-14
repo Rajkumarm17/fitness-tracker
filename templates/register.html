@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form action="/login" method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="Email">Email:</label><br>
+        <input type="text" id="Email" name="email" required><br>
+        <label for="password"> create Password:</label><br>
+        <input type="password" id="createpassword" name="createpassword" required><br>
+        <label for="password">confirm Password:</label><br>
+        <input type="password" id="confirmpassword" name="confirmpassword" required><br>
+        <input type="submit" value="Register">
+        <script>
+            function validatePassword(){
+                var password = document.getElementById("createpassword");
+                var confirm_password = document.getElementById("confirmpassword");
+            
+                if(password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords Don't Match");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+            
+            window.onload = function() {
+                var password = document.getElementById("createpassword");
+                var confirm_password = document.getElementById("confirmpassword");
+            
+                password.onchange = validatePassword;
+                confirm_password.onkeyup = validatePassword;
+            }
+            </script>
+            
+    </form>
+</body>
+</html>

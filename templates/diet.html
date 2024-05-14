@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link type = 'text/css' rel = 'stylesheet' href = '/static/style.css'> -->
+    </head>
+    <body>
+        <ul class="nav justify-content-end" >
+            {% if name %}
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/exercise">Exercise</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/diet">Diet Plan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Log out</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              {% endif %}
+          </ul>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+              <input type="radio" name="options" id="option1" autocomplete="off" checked>weightgain
+            </label>
+            <label class="btn btn-secondary active">
+              <input type="radio" name="options" id="option2" autocomplete="off">weightloss
+            </label>
+        </div>
+    </body>
+</html>
