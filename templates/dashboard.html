@@ -10,6 +10,68 @@
     <!-- <link rel="stylesheet" href="/static/style.css"> -->
 </head>
 <body>
+  
+  <style>
+    /* Body styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header styles */
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    /* Navigation styles */
+    .nav {
+        background-color: #007bff;
+    }
+
+    .nav-item {
+        margin-right: 10px;
+    }
+
+    .nav-link {
+        color: #fff !important;
+    }
+
+    /* Button styles */
+    .btn {
+        margin-top: 20px;
+    }
+
+    /* Footer styles */
+    footer {
+        text-align: center;
+        background-color: #f8f9fa;
+        padding: 20px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+
+    footer p {
+        margin: 0;
+    }
+
+    /* Media query for small screens */
+    @media screen and (max-width: 600px) {
+        h1 {
+            font-size: 24px;
+        }
+
+        .nav {
+            justify-content: center;
+        }
+
+        .nav-item {
+            margin: 0 5px;
+        }
+    }
+</style>
 
         <h1 class="text-center">Welcome {{name}} to fitness tracker</h1>
         <!-- {% if name %}

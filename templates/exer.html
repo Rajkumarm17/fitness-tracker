@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
         /* Hover effect */
         .card:hover {
             transform: scale(1.05);
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
         }
 
         /* Pop-up content */
@@ -52,37 +53,59 @@
         }
     </style>
 </head>
-<ul class="nav justify-content-end" >
+<ul class="nav justify-content-end">
     {% if name %}
     <li class="nav-item">
-      <a class="nav-link" href="/about">About us</a>
+        <a class="nav-link" href="/about">About us</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/exer">Exercise</a>
+        <a class="nav-link" href="/exer">Exercise</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/togg">Diet Plan</a>
+        <a class="nav-link" href="/togg">Diet Plan</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/profile">Profile</a>
     </li>
-      <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link" href="/">Log out</a>
-      </li>
-      {% else %}
-      <li class="nav-item">
+    </li>
+    {% else %}
+    <li class="nav-item">
         <a class="nav-link" href="/register">Register</a>
-      </li>
-      <li class="nav-item">
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="/login">Login</a>
-      </li>
-      {% endif %}
+    </li>
+    {% endif %}
 </ul>
+
 <body>
     <!-- Cards -->
-    <div class="card text-center" onmouseover="showContent('popup1')" onmouseout="hideContent('popup1')" onclick="showPopup('popup1')"><b> Normalpushup</b> </div>
-    <div class="card text-center" onmouseover="showContent('popup2')" onmouseout="hideContent('popup2')" onclick="showPopup('popup2')">Card 2</div>
-    <div class="card text-center" onmouseover="showContent('popup3')" onmouseout="hideContent('popup3')" onclick="showPopup('popup3')">Card 3</div>
+    <div class="card text-center" onmouseover="showContent('popup1')" onmouseout="hideContent('popup1')"
+        onclick="showPopup('popup1')"><b> Normalpushup</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup2')" onmouseout="hideContent('popup2')"
+        onclick="showPopup('popup2')"><b>Squats</b></div>
+    <div class="card text-center" onmouseover="showContent('popup3')" onmouseout="hideContent('popup3')"
+        onclick="showPopup('popup3')"><b>lunges</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup4')" onmouseout="hideContent('popup4')"
+        onclick="showPopup('popup4')"><b>jump squats</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup5')" onmouseout="hideContent('popup5')"
+        onclick="showPopup('popup5')"><b>pistol squats</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup6')" onmouseout="hideContent('popup6')"
+        onclick="showPopup('popup6')"><b>pike pushups</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup7')" onmouseout="hideContent('popup7')"
+        onclick="showPopup('popup7')"><b>pseudo pushups</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup8')" onmouseout="hideContent('popup8')"
+        onclick="showPopup('popup8')"><b>daimond pushups</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup9')" onmouseout="hideContent('popup9')"
+        onclick="showPopup('popup9')"><b>wide pushups</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup10')" onmouseout="hideContent('popup10')"
+        onclick="showPopup('popup10')"><b>Archer pushups</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup11')" onmouseout="hideContent('popup11')"
+        onclick="showPopup('popup11')"><b>Handstand pushups</b> </div>
+    <div class="card text-center" onmouseover="showContent('popup12')" onmouseout="hideContent('popup12')"
+        onclick="showPopup('popup12')"><b>Pullups</b> </div>
     <!-- Add more cards here... -->
 
     <!-- Popup content -->
@@ -93,13 +116,59 @@
     </div>
     <div id="popup2" class="popup-content" onclick="stopPropagation(event)">
         <span class="close" onclick="closePopup('popup2')">&times;</span>
-        <h2>Card 2 Details</h2>
-        <p>This is the detailed content for Card 2.</p>
+        <h2>Primary activation</h2>
+        <p>Standard squat exercises target your quadriceps, hamstrings, glutes, abdominals, and calves</p>
     </div>
     <div id="popup3" class="popup-content" onclick="stopPropagation(event)">
         <span class="close" onclick="closePopup('popup3')">&times;</span>
-        <h2>Card 3 Details</h2>
-        <p>This is the detailed content for Card 3.</p>
+        <h2>Primary activation:</h2>
+        <p>primarily the gluteus maximus, hamstrings, quadriceps, and gastrocnemius/soleus (calves)</p>
+    </div>
+    <div id="popup4" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup4')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p>glutes, quads, hips, and hamstrings</p>
+    </div>
+    <div id="popup5" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup5')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p>quads, hamstrings, glutes, calves, and core</p>
+    </div>
+    <div id="popup6" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup6')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p> primarily target the muscles in the shoulders, specifically the deltoids</p>
+    </div>
+    <div id="popup7" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup7')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p> shoulders and the biceps</p>
+    </div>
+    <div id="popup8" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup8')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p> the triceps</p>
+    </div>
+    <div id="popup9" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup9')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p>chest (pectoralis), shoulders (anterior deltoid), upper arms (triceps)</p>
+    </div>
+    <div id="popup10" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup10')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p> anterior deltoid & triceps brachii</p>
+    </div>
+    <div id="popup11" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup11')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p> anterior deltoid, middle deltoid, posterior deltoid, pectoralis major, upper trapezius, and triceps brachii.
+        </p>
+    </div>
+    <div id="popup12" class="popup-content" onclick="stopPropagation(event)">
+        <span class="close" onclick="closePopup('popup12')">&times;</span>
+        <h2>Primary activation:</h2>
+        <p>The latissimus dorsi, trapezius, and biceps brachii.</p>
     </div>
     <!-- Add more popup contents here... -->
 
@@ -134,4 +203,5 @@
         }
     </script>
 </body>
+
 </html>

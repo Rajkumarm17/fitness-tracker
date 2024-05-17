@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,110 @@
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
 </head>
+
 <body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, red, orange, yellow);
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            /* box-shadow: 0 5px 32px 0 rgba(255, 255, 255, 0.469); */
+            /* border-radius: 30px; */
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            max-width: 400px;
+            margin: 50px auto;
+
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color:black;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 100px);
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 20px;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-bottom: 1.5px solid black;
+        }
+
+        button {
+            display: block;
+            /* Make the button a block-level element */
+            margin: 0 auto;
+            width: 100px;
+            height: 40px;
+            background: transparent;
+            background-color: yellowgreen;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: yellow;
+            color: black;
+        }
+
+        a {
+            color: #4caf50;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            /* Make the button a block-level element */
+
+            text-align: right;
+            /* Align the text to the right */
+            margin-top: 10px;
+            /* Adjust top margin for spacing */
+            /* Center the button horizontally */
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: black;
+
+        }
+    </style>
     {% if message %}
     <p>{{ message }}</p>
     {% endif %}
     <form action="/dashboard" method="POST">
         <h1>Login</h1>
-        
-            <label for="username">Email:</label><br>
-            <input type="text" id="username" name="email" required><br>
-           
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
-            <a class="nav-link" href="/fp">forget password</a>
-            <button type="submit" value="Login">login</button>
+
+        <label for="username">Email:</label><br>
+        <input type="text" id="username" name="email" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <a class="nav-link" href="/fp">forget password</a>
+        <button type="submit" value="Login">login</button>
     </form>
 </body>
+
 </html>

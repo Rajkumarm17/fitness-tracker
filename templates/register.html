@@ -1,46 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
+
 <body>
-    <h2>Register</h2>
+    <style>
+        body {
+            background-image: url('/static/img1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            overflow: hidden;
+            /* background-size: 100%; */
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            /* background: linear-gradient(to right, #d2001a, #7462ff); */
+        }
+
+        form {
+            background-color: transparent;
+            border-radius: 5px;
+            box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.325);
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            margin-top: 5%;
+
+        }
+
+        h1 {
+            text-align: center;
+            /* color: #ccc; */
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 2px;
+            /* color: #ccc; */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 5px;
+            margin-bottom: 10px;
+            /* border: 1px solid #ccc; */
+            /* color: #ccc; */
+            font-size: 20px;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-bottom: 1.5px solid black;
+            /* border-radius: 5px; */
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+            display: block;
+            /* Make the button a block-level element */
+            margin: 0 auto;
+            background-color: #d2001a;
+            color: white;
+            padding: 10px;
+
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #7462ff;
+        }
+
+        a {
+            color: #4caf50;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
     {% if message %}
-        <p>{{ message }}</p>
+    <p>{{ message }}</p>
     {% endif %}
     <form action="/login" method="POST">
+        <h1>Register</h1>
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br>
         <label for="Email">Email:</label><br>
         <input type="text" id="Email" name="email" required><br>
-        <label for="password"> create Password:</label><br>
+        <label for="password"> Create Password:</label><br>
         <input type="password" id="createpassword" name="createpassword" required><br>
-        <label for="password">confirm Password:</label><br>
+        <label for="password">Confirm Password:</label><br>
         <input type="password" id="confirmpassword" name="confirmpassword" required><br>
-        <input type="submit" value="Register">
+        <button type="submit" value="Register">Register</button>
         <script>
-            function validatePassword(){
+            function validatePassword() {
                 var password = document.getElementById("createpassword");
                 var confirm_password = document.getElementById("confirmpassword");
-            
-                if(password.value != confirm_password.value) {
+
+                if (password.value != confirm_password.value) {
                     confirm_password.setCustomValidity("Passwords Don't Match");
                 } else {
                     confirm_password.setCustomValidity('');
                 }
             }
-            
-            window.onload = function() {
+
+            window.onload = function () {
                 var password = document.getElementById("createpassword");
                 var confirm_password = document.getElementById("confirmpassword");
-            
+
                 password.onchange = validatePassword;
                 confirm_password.onkeyup = validatePassword;
             }
-            </script>
-            
+        </script>
+
     </form>
 </body>
+
 </html>
