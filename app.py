@@ -1,17 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_pymongo import PyMongo
 from werkzeug.security import check_password_hash,generate_password_hash
 app = Flask(__name__)
 app.secret_key='raj'
 #app.config["MONGO_URI"] = "mongodb://localhost:27017/fitness_tracker"
-mongo =PyMongo(app,uri="mongodb://localhost:27017/python")
+mongo =PyMongo(app,uri="mongodb://localhost:27017/fitness_tracker")
 db=mongo.db
 # Dummy user database
 #users = {'username': 'password'}
 
 @app.route('/')
 def home():
-    return render_template('dashboard.html')
+    
+            return render_template('dashboard.html')
 
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -32,10 +33,12 @@ def login():
                   query={'email':email}
                   doc ={'$set':{'email':email,'name':name,"password":hash_pass}}
                   mongo.db.user.update_one(query,doc,upsert=True)
+                  flash("Registered successfully")
             # mongo.db.user.insert_one({"name":name,"phone_no":phone_no,"email":email,"password":hash_pass})
                   return render_template('login.html')
             else:
-                  return 'User already exists!'
+                  flash("User already exists!")
+                  return render_template("login.html")
       else:
             return render_template('login.html')
       
@@ -129,22 +132,27 @@ def started():
         
       #   return render_template('started.html')
 
-@app.route('/weightgain')
-def weightgain():
-      return render_template("weightgain.html")
+# @app.route('/weightgain')
+# def weightgain():
+#       return render_template("weightgain.html")
 
 
-@app.route('/weightloss')
-def weightloss():
-      if request.method=='POST':
-            if "name":
-                  return render_template('weightloss.html')
+# @app.route('/weightloss')
+# def weightloss():
+#       if request.method=='POST':
+#             if "name":
+#                   return render_template('weightloss.html')
 
 
 @app.route('/togg')
 def togg():
       name=session['username']
       return render_template('togg.html', name=name)
+
+@app.route('/about')
+def about():
+      name=session['username']
+      return render_template('about.html', name=name)
 
 @app.route('/exer')
 def exer():

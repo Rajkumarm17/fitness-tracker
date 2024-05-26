@@ -14,6 +14,19 @@
 <body>
 
   <style>
+    body {
+      background-image: url('/static/fit-3.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+
+    }
+
     .nav {
       background-color: #f8f9fa;
       padding: 10px 20px;
@@ -35,31 +48,31 @@
 
     /* Form styling */
     form {
-      background-color: rgba(188, 131, 240, 0.695);
+
+      background-color:transparent;
       border: 1px solid #ddd;
-      width: 400px;
+      width: 300px;
       padding: 20px;
-      margin: 20px 0;
+      margin: 50px auto;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-     h2 {
+    h2 {
       margin-bottom: 20px;
       text-align: center;
       color: #333;
       font-size: 24px;
     }
 
-     label {
+    label {
       display: block;
       margin-bottom: 5px;
 
       font-size: 20px;
     }
 
-    input[type="text"]
-    input[type="height"] {
+    input[type="text"] input[type="height"] {
       width: calc(100% - 22px);
       padding: 10px;
       margin-bottom: 10px;
@@ -67,7 +80,16 @@
       border-radius: 4px;
     }
 
-     button {
+    .navbar {
+      padding-left: 20px;
+      background-color: cornflowerblue;
+      color:#ffffff
+    }
+    .nav-link {
+            color: #fff !important;
+        }
+
+    button {
       background-color: #007bff;
       color: #ffffff;
       border: none;
@@ -77,9 +99,20 @@
       font-size: 16px;
     }
 
-     button:hover {
-      background-color: rgb(77, 77, 249);
+    button a {
+      text-decoration: none;
+      color: #ffffff;
     }
+
+    button:hover {
+      background-color: rgb(77, 77, 249);
+     
+    }
+    button a:hover {
+      background-color: rgb(77, 77, 249);
+      color: #ffffff;
+    }
+
 
     /* Paragraph styling */
     #demo {
@@ -88,32 +121,40 @@
       color: #333;
     }
   </style>
-  <ul class="nav justify-content-end">
-    {% if name %}
-    <li class="nav-item">
-      <a class="nav-link" href="/about">About us</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/exer">Exercise</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/togg">Diet Plan</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/profile">Profile</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/">Log out</a>
-    </li>
-    {% else %}
-    <li class="nav-item">
-      <a class="nav-link" href="/register">Register</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/login">Login</a>
-    </li>
-    {% endif %}
-  </ul>
+  <!-- <nav class="navbar">
+    <h1> FitTrack </h1>
+    <ul class="nav justify-content-end">
+
+
+      {% if name %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/exer">Exercise</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/togg">Diet Plan</a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="/">Log out</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav> -->
 
   <form method="POST">
     <h2>Calculate BMI</h2>
@@ -121,12 +162,16 @@
     <input type="text" id="weight" name="weight" required>
     <label for="height">Enter height in cm:</label>
     <input type="height" id="height" name="height" required><br><br>
-    <button type="submit" value="submit" onclick="myFunction()">calc bmi</button>
+    <button type="submit" value="submit" onsubmit="myFunction()">calc bmi</button>
+    <button><a href="/dashboard">back</a></button>
   </form>
-
-  <p id="demo">
-  <p> {{bmi}} {{resp}}</p>
+  
+  {% if bmi %}
+  <p id="demo" >
+    <p class="card card-body" style="width: fit-content; margin: 50px auto;"> {{bmi}} {{resp}}</p>
   </p>
+  {% endif %} 
+
   <script>
     function myFunction() {
       document.getElementById("demo").innerHTML;

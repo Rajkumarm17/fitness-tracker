@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
+    body {
+      background-image: url('/static/fit-3.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
     /* Styling for the label */
     .label {
       font-size: 16px;
@@ -17,12 +23,12 @@
       margin: 20px;
     }
 
-      /* Default color */
-    
+    /* Default color */
+
 
     /* Highlighted style for selected option */
     .label.selected {
-      color: #2196F3;
+      color: #e8eef3;
       /* Highlighted color */
     }
 
@@ -66,7 +72,7 @@
     }
 
     input:checked+.slider {
-      background-color: #2196F3;
+      background-color: #dae2f6;
     }
 
     input:checked+.slider:before {
@@ -85,9 +91,10 @@
     /* Styling for the card */
     .card {
       width: 100%;
-      border: 1px solid #ccc;
+      color: black;
+      border: 1px solid black;
       border-radius: 10px;
-      background-color: #f5f5f5;
+      background: transparent;
       padding: 20px;
       margin-top: 20px;
       /* width: 300px; */
@@ -99,12 +106,22 @@
       margin: 0px;
     }
 
+    .navbar {
+      padding-left: 20px;
+      background: transparent;
+      color: #fff
+    }
+
+    .nav-link {
+      color: #fff !important;
+    }
 
 
-    
+
     table {
       border-collapse: collapse;
       width: 100%;
+      
     }
 
     th,
@@ -119,43 +136,51 @@
     }
 
     .high-calories {
-      background-color: #ffe6e6;
+      background-color:  #f0d19c;
     }
 
     .low-calories {
-      background-color: #ffe6e6;
+      background-color: #f0d19c;
     }
   </style>
 </head>
 
 <body>
 
-  <ul class="nav justify-content-end">
-    {% if name %}
-    <li class="nav-item">
-      <a class="nav-link" href="/about">About us</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/exer">Exercise</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/togg">Diet Plan</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/profile">Profile</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/">Log out</a>
-    </li>
-    {% else %}
-    <li class="nav-item">
-      <a class="nav-link" href="/register">Register</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/login">Login</a>
-    </li>
-    {% endif %}
-  </ul>
+  <nav class="navbar">
+    <h1> FitTrack </h1>
+    <ul class="nav justify-content-end">
+
+
+      {% if name %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Home</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="/about">About us</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="/exer">Exercise</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/togg">Diet Plan</a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="/">Log out</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
 
 
   <div class="label">weight gain</div>
