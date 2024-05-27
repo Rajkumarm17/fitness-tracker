@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_pymongo import PyMongo, MongoClient
+from pymongo import MongoClient
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
-from werkzeug.security import check_password_hash,generate_password_hash
 
 
 app = Flask(__name__)
