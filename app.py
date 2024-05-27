@@ -2,13 +2,15 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_pymongo import PyMongo, MongoClient
 import os
 from werkzeug.security import check_password_hash,generate_password_hash
+
+
 app = Flask(__name__)
 app.secret_key='raj'
 app.config["MONGO_URI"] = os.getenv('mongo_url')
 client=MongoClient(os.getenv('mongo_url'))
 db=client['FitTrac']
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 @app.route('/')
 def home():
