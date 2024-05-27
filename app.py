@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, MongoClient
+import os
 from werkzeug.security import check_password_hash,generate_password_hash
 app = Flask(__name__)
 app.secret_key='raj'
-#app.config["MONGO_URI"] = "mongodb://localhost:27017/fitness_tracker"
-mongo =PyMongo(app,uri="mongodb://localhost:27017/fitness_tracker")
-db=mongo.db
+app.config["MONGO_URI"] = os.getenv('mongo_url')
+client=MongoClient(os.getenv('mongo_url'))
+db=client['FitTrac']
+
+# mongo =PyMongo(app,uri="mongodb://localhost:27017/fitness_tracker")
+# db=mongo.db
 # Dummy user database
 #users = {'username': 'password'}
 
@@ -24,7 +28,7 @@ def register():
 @app.route('/login',methods=['GET','POST'])
 def login():
       if request.method=='POST':
-            existing_user = mongo.db.user.find_one({'email': request.form['email']})
+            existing_user = db.user.find_one({'email': request.form['email']})
             if existing_user is None:
                   name=request.form['username']
                   email=request.form['email']
@@ -32,9 +36,9 @@ def login():
                   hash_pass = generate_password_hash(request.form['confirmpassword'], method='pbkdf2:sha256')
                   query={'email':email}
                   doc ={'$set':{'email':email,'name':name,"password":hash_pass}}
-                  mongo.db.user.update_one(query,doc,upsert=True)
+                  db.user.update_one(query,doc,upsert=True)
                   flash("Registered successfully")
-            # mongo.db.user.insert_one({"name":name,"phone_no":phone_no,"email":email,"password":hash_pass})
+            # mongodb.user.insert_one({"name":name,"phone_no":phone_no,"email":email,"password":hash_pass})
                   return render_template('login.html')
             else:
                   flash("User already exists!")
@@ -98,7 +102,7 @@ def started():
               fin = "your bmi is " + str(bmi)
               query={'email':email}
               doc ={'$set':{'weight':we,'height':he,'bmi':bmi}}
-              mongo.db.user.update_one(query,doc,upsert=True)
+              db.user.update_one(query,doc,upsert=True)
             #   db.user.update_one([{'weight':we,'height':he,'bmi':bmi}])
               if bmi<=18.5:
                     res="You are underweight"

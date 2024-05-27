@@ -23,15 +23,18 @@
         .card {
             width: 180px;
             height: 150px;
-            padding-top: 50px;
-            border: 1px solid #ccc;
+            /* color: #ccc; */
+            /* padding-top: 50px; */
+            border: 1px solid black;
             border-radius: 8px;
             background:transparent;
             margin: 10px;
-            padding: 10px;
+            padding-left: 20px;
+            padding-top: 40px;
             cursor: pointer;
             transition: transform 0.3s;
             display: inline-block;
+
             position: relative;
         }
 
@@ -46,11 +49,11 @@
             display: none;
             position: fixed;
             top: 70%;
-            left: 50%;
+            left: 60%;
             transform: translate(-50%, -50%);
             padding: 20px;
-            background-color: white;
-            border: 1px solid #ccc;
+            background: transparent;
+            border: 1px solid black;
             border-radius: 8px;
             width: 300px;
             z-index: 9999;
@@ -112,7 +115,7 @@
 <body>
     <!-- Cards -->
     <div class="crd">
-    <div class="card text-center" onmouseover="showContent('popup1')" onmouseout="hideContent('popup1')"
+    <div class="card" onmouseover="showContent('popup1')" onmouseout="hideContent('popup1')"
         onclick="showPopup('popup1')"><b> Chest workouts</b> </div>
     <div class="card text-center" onmouseover="showContent('popup2')" onmouseout="hideContent('popup2')"
         onclick="showPopup('popup2')"><b>Shoulder Workouts</b></div>
