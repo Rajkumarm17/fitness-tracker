@@ -76,16 +76,6 @@ def dashboard():
                   return 'Username not found'
       else:
             return render_template('dashboard.html', name=session['username'])
-    # name=request.form['username']
-#     if request.method=='POST':
-#          em=request.form.get('email')
-#          un=request.form.get('username')
-#          cp=request.form.get('createpassword')
-#          p=request.form.get('confrimpassword')
-#          db.user.insert_many([{'email':em,'username':un,'createpassword':cp,'confrimpassword':p }])
-#          return render_template('dashboard.html', username=un)
-
-      #   return render_template('login.html')
 
 
 @app.route('/started', methods=['GET','POST'])
@@ -114,38 +104,6 @@ def started():
       return render_template('started.html', name=name)
 
 
-
-# @app.route('/bmi',)
-# def calculate():
-      #   if request.method=='POST':
-      #         we=int(request.form.get('weight'))
-      #         he=int(request.form.get('height'))
-      #         bmi=round(we/((he/100)**2),2)
-      #         db.user.insert_many([{'weight':we,'height':he,'bmi':bmi}])
-      #         if bmi<=18.5:
-      #               res="You are underweight"
-      #         elif 18.5<=bmi<=24.9:
-      #               res="Healthy weight"
-      #         elif 24.9<=bmi<=30.0:
-      #               res="Over weight"
-      #         else:
-      #               res="obesity"
-      #         return render_template('bmi.html',bmi=bmi,resp=res)
-        
-      #   return render_template('started.html')
-
-# @app.route('/weightgain')
-# def weightgain():
-#       return render_template("weightgain.html")
-
-
-# @app.route('/weightloss')
-# def weightloss():
-#       if request.method=='POST':
-#             if "name":
-#                   return render_template('weightloss.html')
-
-
 @app.route('/togg')
 def togg():
       name=session['username']
@@ -160,6 +118,9 @@ def about():
 def exer():
       name=session['username']
       return render_template('exer.html', name=name)
+@app.route('/bot')
+def bot():
+      return render_template('bot.html')
       
 
 if __name__ == '__main__':
