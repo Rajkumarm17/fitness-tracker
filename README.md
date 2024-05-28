@@ -13,6 +13,8 @@ FitTrack is the perfect companion for anyone looking to get fit, stay active, an
 ## Features
 - User registration and authentication
 - BMI calculation
+- Exercises
+- Diet plan
 - AI chatbot for customer suport
 - Integration with Azure cosmos DB
 - Hosting on Azure App services
