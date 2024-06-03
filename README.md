@@ -3,7 +3,6 @@ FitTrack is the perfect companion for anyone looking to get fit, stay active, an
 ## Table of content
 - [Features](#features)
 - [Technologies used](#tehcnologies-used)
-- [Setup and Installation](#setup-and-installation)
 - [Collaboration](#collaboration)
 - [Screenshots](#screenshots)
 - [Demo url](#demo-url)   
@@ -21,20 +20,18 @@ FitTrack is the perfect companion for anyone looking to get fit, stay active, an
 
 ## Technologies used
 
-- **FRontend:** HTML, CSS, Javascript
+- **Frontend:** HTML, CSS, Javascript
 - **Backend:** Python(Flask/Django)
 - **Database:** MongoDB (Azure CosomosDB)
 - **Hosting:** Azure App services
 - **AI and Chatbot:** Azure Bot service
 
-## Setup and Installation
-
 ### Prerequsities
 
--Python 3.x
--node.js and npm (for frontend dependencies)
--mongoDB (local or Azure cosmosDB)
--Azure account
+- Python 3.x
+- node.js and npm (for frontend dependencies)
+- mongoDB (local or Azure cosmosDB)
+- Azure account
 
 ### Collaboration
 
