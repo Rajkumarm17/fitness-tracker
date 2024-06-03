@@ -26,14 +26,14 @@ FitTrack is the perfect companion for anyone looking to get fit, stay active, an
 - **Hosting:** Azure App services
 - **AI and Chatbot:** Azure Bot service
 
-### Prerequsities
+## Prerequsities
 
 - Python 3.x
 - node.js and npm (for frontend dependencies)
 - mongoDB (local or Azure cosmosDB)
 - Azure account
 
-### Collaboration
+## Collaboration
 
 - Rajkumar M
 - Sasikanth
