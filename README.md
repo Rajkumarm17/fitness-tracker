@@ -21,7 +21,7 @@ FitTrack is the perfect companion for anyone looking to get fit, stay active, an
 ## Technologies used
 
 - **Frontend:** HTML, CSS, Javascript
-- **Backend:** Python(Flask/Django)
+- **Backend:** Python(Flask)
 - **Database:** MongoDB (Azure CosomosDB)
 - **Hosting:** Azure App services
 - **AI and Chatbot:** Azure Bot service
