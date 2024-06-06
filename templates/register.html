@@ -15,7 +15,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             width: 100%;
-            height:100%;
+            height: 100%;
 
             overflow: hidden;
             /* background-size: 100%; */
@@ -109,6 +109,16 @@
         <label for="password">Confirm Password:</label><br>
         <input type="password" id="confirmpassword" name="confirmpassword" required><br>
         <button type="submit" value="Register">Register</button>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+
+            <script>alert("{{messages[0]}}")</script>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <script>
             function validatePassword() {
                 var password = document.getElementById("createpassword");

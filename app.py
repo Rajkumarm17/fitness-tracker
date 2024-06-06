@@ -65,15 +65,17 @@ def logout():
 def dashboard():
       if request.method=='POST':
             login_email= db.user.find_one({'email' : request.form['email']})
-            session['username'] =login_email['name']
-            session['email'] = login_email['email']
             if login_email:
                   if check_password_hash(login_email['password'], request.form['password']):
+                         session['username'] =login_email['name']
+                         session['email'] = login_email['email']
                          return render_template('dashboard.html',name=session['username'])
                   else:
-                        return"Invalid username/password combination"
+                        flash("Invalid username/password combination")
+                        return render_template('login.html')
             else:
-                  return 'Username not found'
+                  flash("Username not found")
+                  return  render_template('register.html')
       else:
             return render_template('dashboard.html', name=session['username'])
 

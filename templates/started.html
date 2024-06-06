@@ -49,7 +49,7 @@
     /* Form styling */
     form {
 
-      background-color:transparent;
+      background-color: transparent;
       border: 1px solid #ddd;
       width: 300px;
       padding: 20px;
@@ -57,6 +57,11 @@
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
+
+    /* div {
+      border: none;
+    } */
 
     h2 {
       margin-bottom: 20px;
@@ -83,11 +88,12 @@
     .navbar {
       padding-left: 20px;
       background-color: cornflowerblue;
-      color:#ffffff
+      color: #ffffff
     }
+
     .nav-link {
-            color: #fff !important;
-        }
+      color: #fff !important;
+    }
 
     button {
       background-color: #007bff;
@@ -106,8 +112,9 @@
 
     button:hover {
       background-color: rgb(77, 77, 249);
-     
+
     }
+
     button a:hover {
       background-color: rgb(77, 77, 249);
       color: #ffffff;
@@ -121,40 +128,7 @@
       color: #333;
     }
   </style>
-  <!-- <nav class="navbar">
-    <h1> FitTrack </h1>
-    <ul class="nav justify-content-end">
 
-
-      {% if name %}
-
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/exer">Exercise</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/togg">Diet Plan</a>
-      </li>
-
-
-      <li class="nav-item">
-        <a class="nav-link" href="/">Log out</a>
-      </li>
-      {% else %}
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      {% endif %}
-    </ul>
-  </nav> -->
 
   <form method="POST">
     <h2>Calculate BMI</h2>
@@ -163,14 +137,16 @@
     <label for="height">Enter height in cm:</label>
     <input type="height" id="height" name="height" required><br><br>
     <button type="submit" value="submit" onsubmit="myFunction()">calc bmi</button>
-    <button><a href="/dashboard">back</a></button>
+    <a href="/dashboard"><button type="button">Back</button></a>
   </form>
-  
+  <div>
+  </div>
+
   {% if bmi %}
-  <p id="demo" >
-    <p class="card card-body" style="width: fit-content; margin: 50px auto;"> {{bmi}} {{resp}}</p>
+  <p id="demo">
+  <p class="card card-body" style="width: fit-content; margin: 50px auto;"> {{bmi}} {{resp}}</p>
   </p>
-  {% endif %} 
+  {% endif %}
 
   <script>
     function myFunction() {
