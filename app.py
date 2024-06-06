@@ -74,7 +74,7 @@ def dashboard():
                         flash("Invalid username/password combination")
                         return render_template('login.html')
             else:
-                  flash("Username not found")
+                  flash("Username not found. Please register to continue")
                   return  render_template('register.html')
       else:
             return render_template('dashboard.html', name=session['username'])
